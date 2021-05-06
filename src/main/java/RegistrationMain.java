@@ -3,78 +3,44 @@ import java.util.regex.Pattern;
 
 public class RegistrationMain {
 
-    public boolean CheckFirstName(String firstName) {
-        //Scanner sc = new Scanner(System.in);
-        //System.out.println("Enter the first name :");
-        //String firstName = sc.nextLine();
+    public boolean CheckFirstName(String firstName) throws RegistrationMainException {
 
-        boolean result  = Pattern.compile("^[A-Z][A-Za-z]{2,}").matcher(firstName).matches();
-        if(result) {
-            System.out.println("Valid First Name");
-        }
-        else {
-            System.out.println("Invalid First Name");
-        }
-        return result;
+        if (firstName.matches("^[A-Z]{1}[a-z]{2,}$"))
+            return true;
+        else
+            throw new RegistrationMainException("Invalid First Name");
     }
 
-    public boolean CheckLastName(String lastName) {
-        //Scanner sc = new Scanner(System.in);
-        //System.out.println("Enter the Last Name :");
-        //String lastName = sc.nextLine();
+    public boolean CheckLastName(String lastName) throws RegistrationMainException {
 
-        boolean result  = Pattern.compile("^[A-Z][A-Za-z]{2,}").matcher(lastName).matches();
-        if(result) {
-            System.out.println("Valid Last Name");
-        }
-        else {
-            System.out.println("Invalid Last Name");
-        }
-        return result;
+        if (lastName.matches("^[A-Z]{1}[a-z]{2,}$"))
+            return true;
+        else
+            throw new RegistrationMainException("Invalid last Name");
     }
 
-    public boolean Email(String email) {
-        //Scanner sc = new Scanner(System.in);
-        //System.out.println("Enter the Email :");
-        //String email = sc.nextLine();
+    public boolean Email(String email) throws RegistrationMainException {
 
-        boolean result = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$").matcher(email).matches();
-        if(result) {
-            System.out.println("Valid Email");
-        }
-        else {
-            System.out.println("Invalid Email");
-        }
-        return result;
+        if (email.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"))
+            return true;
+        else
+            throw new RegistrationMainException("Invalid Email");
     }
 
-    public boolean PhoneNumber(String phoneNumber) {
-        //Scanner sc = new Scanner(System.in);
-        //System.out.println("Enter the Phone Number :");
-        //String phoneNumber = sc.nextLine();
+    public boolean PhoneNumber(String phoneNumber) throws RegistrationMainException {
 
-        boolean result  = Pattern.compile("^(\\+?\\d{1,4}[\\s-])?(?!0+\\s+,?$)\\d{10}\\s*,?$").matcher(phoneNumber).matches();
-        if(result) {
-            System.out.println("Valid Phone Number");
-        }
-        else {
-            System.out.println("Invalid Phone Number");
-        }
-        return result;
+        if (phoneNumber.matches("^(\\+?\\d{1,4}[\\s-])?(?!0+\\s+,?$)\\d{10}\\s*,?$"))
+            return true;
+        else
+            throw new RegistrationMainException("Invalid Phone Number");
     }
 
-    public boolean Password(String password) {
-        //Scanner sc = new Scanner(System.in);
-        //System.out.println("Enter the Password :");
-        //String password = sc.nextLine();
+    public boolean Password(String password) throws RegistrationMainException {
 
-        boolean result  = Pattern.compile("^(?=.*[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])[A-Za-z0-9!@#$%^&*?]{8,}$").matcher(password).matches();
-        if(result) {
-            System.out.println("Valid Password ");
-        }
-        else {
-            System.out.println("Invalid Password");
-        }
-        return result;
+        if (password.matches("^(?=.*[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])[A-Za-z0-9!@#$%^&*?]{8,}$"))
+            return true;
+        else
+            throw new RegistrationMainException("Invalid Password");
     }
 }
+
