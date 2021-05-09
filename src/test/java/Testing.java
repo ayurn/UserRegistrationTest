@@ -3,12 +3,14 @@ import org.junit.jupiter.api.Test;
 
 public class Testing {
 
+
+
     @Test
     public void FirstName() {
         RegistrationMain registrationMain = new RegistrationMain();
         boolean result = false;
         try {
-            result = registrationMain.CheckFirstName("Ayur");
+            result = Boolean.parseBoolean(registrationMain.validateFirstName.validate("Ayur"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
@@ -19,7 +21,7 @@ public class Testing {
     public void givenFirstName_WhenShort_ShouldReturnFalse() {
         RegistrationMain registrationMain =  new RegistrationMain();
         try {
-            registrationMain.CheckFirstName("Ab");
+            registrationMain.validateFirstName.validate("Ab");
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
@@ -30,7 +32,7 @@ public class Testing {
         RegistrationMain registrationMain = new RegistrationMain();
         boolean result = false;
         try {
-            result = registrationMain.CheckLastName("Ninawe");
+            result = Boolean.parseBoolean(registrationMain.validateLastName.validate("Ninawe"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
@@ -41,7 +43,7 @@ public class Testing {
     public void givenLastName_WhenShort_ShouldReturnFalse() {
         RegistrationMain registrationMain =  new RegistrationMain();
         try {
-            registrationMain.CheckLastName("Ni");
+            registrationMain.validateLastName.validate("Ni");
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
@@ -52,7 +54,7 @@ public class Testing {
         RegistrationMain registrationMain = new RegistrationMain();
         boolean result = false;
         try {
-            result = registrationMain.Email("Ninawe@gmail.com");
+            result = Boolean.parseBoolean(registrationMain.validateEmail.validate("Ninawe@gmail.com"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
@@ -64,7 +66,7 @@ public class Testing {
         RegistrationMain registrationMain = new RegistrationMain();
         boolean result = false;
         try {
-            result = registrationMain.PhoneNumber("7972910340");
+            result = Boolean.parseBoolean(registrationMain.validateMobile.validate("7972910340"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
@@ -75,35 +77,31 @@ public class Testing {
     public void givenMobileNo_WhenNotExactTen_ShouldReturnFalse() {
         RegistrationMain registrationMain =  new RegistrationMain();
         try {
-            registrationMain.PhoneNumber("91 124585454454");
+            registrationMain.validateMobile.validate("91 124585454454");
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
     }
-
 
     @Test
     public void PasswordTest() {
         RegistrationMain registrationMain = new RegistrationMain();
         boolean result = false;
         try {
-            result = registrationMain.Password("Ayurrr7@n8ninawe");
+            result = Boolean.parseBoolean(registrationMain.validatePassword.validate("Ayurrr7@n8ninawe"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
         Assertions.assertTrue(result);
     }
 
-
     @Test
     public void givenPassword_WhenMoreThanOneSpecialChar_ShouldReturnFalse() {
         RegistrationMain registrationMain =  new RegistrationMain();
         try {
-            registrationMain.Password("abcA12");
+            registrationMain.validatePassword.validate("abcA12");
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
     }
-
-
 }

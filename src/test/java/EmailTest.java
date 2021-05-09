@@ -8,140 +8,140 @@ public class EmailTest {
         RegistrationMain registrationMain = new RegistrationMain();
         boolean result = false;
         try {
-            result = registrationMain.Email("abc@yahoo.com");
+            result = Boolean.parseBoolean(registrationMain.validateEmail.validate("abc@yahoo.com"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
         Assertions.assertTrue(result);
         boolean result1 = false;
         try {
-            result1 = registrationMain.Email("abc-100@yahoo.com");
+            result1 = Boolean.parseBoolean(registrationMain.validateEmail.validate("abc-100@yahoo.com"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
         Assertions.assertTrue(result1);
         boolean result2 = false;
         try {
-            result2 = registrationMain.Email("abc.100@yahoo.com");
+            result2 = Boolean.parseBoolean(registrationMain.validateEmail.validate("abc.100@yahoo.com"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
         Assertions.assertTrue(result2);
         boolean result3 = false;
         try {
-            result3 = registrationMain.Email("abc111@abc.com");
+            result3 = Boolean.parseBoolean(registrationMain.validateEmail.validate("abc111@abc.com"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
         Assertions.assertTrue(result3);
         boolean result4 = false;
         try {
-            result4 = registrationMain.Email("abc100@abc.net");
+            result4 = Boolean.parseBoolean(registrationMain.validateEmail.validate("abc100@abc.net"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
         Assertions.assertTrue(result4);
         boolean result5 = false;
         try {
-            result5 = registrationMain.Email("abc.100@abc.com.au");
+            result5 = Boolean.parseBoolean(registrationMain.validateEmail.validate("abc.100@abc.com.au"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
         Assertions.assertTrue(result5);
         boolean result6 = false;
         try {
-            result6 = registrationMain.Email("abc@1.com");
+            result6 = Boolean.parseBoolean(registrationMain.validateEmail.validate("abc@1.com"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
         Assertions.assertTrue(result6);
         boolean result7 = false;
         try {
-            result7 = registrationMain.Email("abc@gmail.com.com");
+            result7 = Boolean.parseBoolean(registrationMain.validateEmail.validate("abc@gmail.com.com"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
         Assertions.assertTrue(result7);
         boolean result8 = false;
         try {
-            result8 = registrationMain.Email("abc");
+            result8 = Boolean.parseBoolean(registrationMain.validateEmail.validate("abc"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
         Assertions.assertFalse(result8);
         boolean result9 = false;
         try {
-            result9 = registrationMain.Email("abc@.com.my");
+            result9 = Boolean.parseBoolean(registrationMain.validateEmail.validate("abc@.com.my"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
         Assertions.assertFalse(result9);
         boolean result10 = false;
         try {
-            result10 = registrationMain.Email("abc123@gmail.a");
+            result10 = Boolean.parseBoolean(registrationMain.validateEmail.validate("abc123@gmail.a"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
         Assertions.assertFalse(result10);
         boolean result11 = false;
         try {
-            result11 = registrationMain.Email("abc123@.com");
+            result11 = Boolean.parseBoolean(registrationMain.validateEmail.validate("abc123@.com"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
         Assertions.assertFalse(result11);
         boolean result12 = false;
         try {
-            result12 = registrationMain.Email("abc123@.com.com");
+            result12 = Boolean.parseBoolean(registrationMain.validateEmail.validate("abc123@.com.com"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
         Assertions.assertFalse(result12);
         boolean result13 = false;
         try {
-            result13 = registrationMain.Email(".abc@abc.com");
+            result13 = Boolean.parseBoolean(registrationMain.validateEmail.validate(".abc@abc.com"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
         Assertions.assertFalse(result13);
         boolean result14 = false;
         try {
-            result14 = registrationMain.Email("abc()*@gmail.com");
+            result14 = Boolean.parseBoolean(registrationMain.validateEmail.validate("abc()*@gmail.com"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
         Assertions.assertFalse(result14);
         boolean result15 = false;
         try {
-            result15 = registrationMain.Email("abc@%*.com");
+            result15 = Boolean.parseBoolean(registrationMain.validateEmail.validate("abc@%*.com"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
         Assertions.assertFalse(result15);
         boolean result16 = false;
         try {
-            result16 = registrationMain.Email("abc..2002@gmail.com");
+            result16 = Boolean.parseBoolean(registrationMain.validateEmail.validate("abc..2002@gmail.com"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
         Assertions.assertFalse(result16);
         boolean result17 = false;
         try {
-            result17 = registrationMain.Email("abc.@gmail.com");
+            result17 = Boolean.parseBoolean(registrationMain.validateEmail.validate("abc.@gmail.com"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
         Assertions.assertFalse(result17);
         boolean result18 = false;
         try {
-            result18 = registrationMain.Email("abc@abc@gmail.com");
+            result18 = Boolean.parseBoolean(registrationMain.validateEmail.validate("abc@abc@gmail.com"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }
         Assertions.assertFalse(result18);
         boolean result19 = false;
         try {
-            result19 = registrationMain.Email("abc@gmail.com.1a");
+            result19 = Boolean.parseBoolean(registrationMain.validateEmail.validate("abc@gmail.com.1a"));
         } catch (RegistrationMainException e) {
             e.printStackTrace();
         }

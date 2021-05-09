@@ -1,46 +1,57 @@
 import java.util.Scanner;
 import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 
 public class RegistrationMain {
 
-    public boolean CheckFirstName(String firstName) throws RegistrationMainException {
-
-        if (firstName.matches("^[A-Z]{1}[a-z]{2,}$"))
+    public boolean matchpattern(String regex, String input) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher= pattern.matcher(input);
+        if(matcher.find()) {
             return true;
+        } else {
+            return false;
+        }
+    }
+
+    ValidateEntry validateFirstName = (String firstName) -> {
+        String regex = "(^[A-Z]{1}[a-z]{2,}$)";
+        if(matchpattern(regex , firstName))
+            return "true";
         else
             throw new RegistrationMainException("Invalid First Name");
-    }
+    };
 
-    public boolean CheckLastName(String lastName) throws RegistrationMainException {
+    ValidateEntry validateLastName = (String lastName) -> {
 
-        if (lastName.matches("^[A-Z]{1}[a-z]{2,}$"))
-            return true;
+        if(matchpattern("(^[A-Z]{1}[a-z]{2,}$)" , lastName))
+            return "true";
         else
             throw new RegistrationMainException("Invalid last Name");
-    }
+    };
 
-    public boolean Email(String email) throws RegistrationMainException {
-
-        if (email.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"))
-            return true;
+    ValidateEntry validateEmail = (String email) -> {
+        if(matchpattern("^[a-zA-Z0-9]+[-+.]?+[A-Za-z0-9]+[@]+[A-Za-z0-9]+[.][a-z]{2,}+[.]?+([a-z]{2,})?$" , email))
+            return "true";
         else
             throw new RegistrationMainException("Invalid Email");
-    }
+    };
 
-    public boolean PhoneNumber(String phoneNumber) throws RegistrationMainException {
+    ValidateEntry validateMobile = (String mobile) -> {
 
-        if (phoneNumber.matches("^(\\+?\\d{1,4}[\\s-])?(?!0+\\s+,?$)\\d{10}\\s*,?$"))
-            return true;
+        if(matchpattern("^(\\+?\\d{1,4}[\\s-])?(?!0+\\s+,?$)\\d{10}\\s*,?$" , mobile))
+            return "true";
         else
             throw new RegistrationMainException("Invalid Phone Number");
-    }
+    };
 
-    public boolean Password(String password) throws RegistrationMainException {
+    ValidateEntry validatePassword = (String password) -> {
 
-        if (password.matches("^(?=.*[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])[A-Za-z0-9!@#$%^&*?]{8,}$"))
-            return true;
+        if(matchpattern("^((?=.*[A-Z]+)(?=.*[0-9]+)([A-Za-z0-9@#$%^&*]{8,}))$" , password))
+            return "true";
         else
             throw new RegistrationMainException("Invalid Password");
-    }
+    };
 }
 
